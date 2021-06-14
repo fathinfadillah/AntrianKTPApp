@@ -28,10 +28,10 @@ public class MainForm {
             public void actionPerformed(ActionEvent e) {
                 formutama.remove(panel1);
                 formutama.remove(panel2);
-                PegawaiAntrian c = new PegawaiAntrian();
-                c.formutama.setVisible(true);
+                Login c = new Login();
+                c.Login.setVisible(true);
                 formutama.setLayout(new BorderLayout());
-                formutama.add(c.formutama);
+                formutama.add(c.Login);
                 formutama.validate();
             }
         });
