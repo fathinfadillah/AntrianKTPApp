@@ -52,6 +52,12 @@ public class Login {
 
             }
         });
+        btnSignUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
     public static void main(String[] args) {
         JFrame frame = new JFrame("Login");
