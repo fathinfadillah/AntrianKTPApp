@@ -52,7 +52,7 @@
               </component>
             </children>
           </grid>
-          <grid id="e0ea" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="e0ea" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -87,6 +87,18 @@
                   <horizontalAlignment value="2"/>
                   <horizontalTextPosition value="2"/>
                   <text value="&gt; Beranda"/>
+                </properties>
+              </component>
+              <component id="2e4ac" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="50"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-12291388"/>
+                  <editable value="false"/>
+                  <enabled value="false"/>
                 </properties>
               </component>
             </children>
@@ -195,7 +207,7 @@
                       <text value="LOKET 1"/>
                     </properties>
                   </component>
-                  <grid id="cb3c5" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="cb3c5" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -205,23 +217,12 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="446e0" class="javax.swing.JButton" binding="btnnext1">
+                      <component id="446e0" class="javax.swing.JButton" binding="btnpros">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-12291388"/>
-                          <font size="22" style="1"/>
-                          <foreground color="-1"/>
-                          <text value="NEXT"/>
-                        </properties>
-                      </component>
-                      <component id="d1012" class="javax.swing.JButton" binding="btnpros1">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <background color="-16768928"/>
                           <font size="22" style="1"/>
                           <foreground color="-1"/>
                           <text value="PROSES"/>
@@ -322,7 +323,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="f3c3e" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="f3c3e" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -332,23 +333,12 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="19457" class="javax.swing.JButton" binding="btnnext2">
+                      <component id="19457" class="javax.swing.JButton" binding="btnpros2">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-12291388"/>
-                          <font size="22" style="1"/>
-                          <foreground color="-1"/>
-                          <text value="NEXT"/>
-                        </properties>
-                      </component>
-                      <component id="6edc1" class="javax.swing.JButton" binding="btnpros2">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <background color="-16768928"/>
                           <font size="22" style="1"/>
                           <foreground color="-1"/>
                           <text value="PROSES"/>
@@ -449,7 +439,7 @@
                       </grid>
                     </children>
                   </grid>
-                  <grid id="f00b" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="f00b" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -459,23 +449,12 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="64ac5" class="javax.swing.JButton" binding="btnnext3">
+                      <component id="64ac5" class="javax.swing.JButton" binding="btnpros3">
                         <constraints>
                           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
                           <background color="-12291388"/>
-                          <font size="22" style="1"/>
-                          <foreground color="-1"/>
-                          <text value="NEXT"/>
-                        </properties>
-                      </component>
-                      <component id="31915" class="javax.swing.JButton" binding="btnpros3">
-                        <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <background color="-16768928"/>
                           <font size="22" style="1"/>
                           <foreground color="-1"/>
                           <text value="PROSES"/>

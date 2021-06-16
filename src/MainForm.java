@@ -16,7 +16,7 @@ public class MainForm {
             public void actionPerformed(ActionEvent e) {
                 formutama.remove(panel1);
                 formutama.remove(panel2);
-                UserAntrian c = new UserAntrian();
+                PengantriAntrian c = new PengantriAntrian();
                 c.formutama.setVisible(true);
                 formutama.setLayout(new BorderLayout());
                 formutama.add(c.formutama);

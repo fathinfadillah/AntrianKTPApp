@@ -24,9 +24,6 @@ public class LQueue {
         }
 
         String frontElement = elements.getNode();
-
-        System.out.println("Dequeue " + frontElement);
-
         elements.deleteHead();
         size--;
 
