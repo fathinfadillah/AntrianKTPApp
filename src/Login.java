@@ -15,6 +15,7 @@ public class Login {
     public JPanel Login;
     private JPanel panel1;
     private JPanel panel2;
+    private JButton btnback;
 
     public Login() {
         btnLogin.addActionListener(new ActionListener() {
@@ -55,7 +56,25 @@ public class Login {
         btnSignUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Login.remove(panel1);
+                Login.remove(panel2);
+                SignUp c = new SignUp();
+                c.SignUp.setVisible(true);
+                Login.setLayout(new BorderLayout());
+                Login.add(c.SignUp);
+                Login.validate();
+            }
+        });
+        btnback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Login.remove(panel1);
+                Login.remove(panel2);
+                MainForm c = new MainForm();
+                c.formutama.setVisible(true);
+                Login.setLayout(new BorderLayout());
+                Login.add(c.formutama);
+                Login.validate();
             }
         });
     }

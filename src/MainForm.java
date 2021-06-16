@@ -9,6 +9,7 @@ public class MainForm {
     private JButton btnpegawai;
     private JPanel panel1;
     private JPanel panel2;
+    private JButton btnaboutus;
 
     public MainForm() {
         btnuser.addActionListener(new ActionListener() {
@@ -32,6 +33,18 @@ public class MainForm {
                 c.Login.setVisible(true);
                 formutama.setLayout(new BorderLayout());
                 formutama.add(c.Login);
+                formutama.validate();
+            }
+        });
+        btnaboutus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                formutama.remove(panel1);
+                formutama.remove(panel2);
+                AboutUs c = new AboutUs();
+                c.AboutUs.setVisible(true);
+                formutama.setLayout(new BorderLayout());
+                formutama.add(c.AboutUs);
                 formutama.validate();
             }
         });
