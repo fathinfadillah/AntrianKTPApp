@@ -23,7 +23,7 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                    String url = "jdbc:sqlserver://localhost;database=AntrianKTPApp;user=fathinfadillah;password=Fathin@2021";
+                    String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;user=sa;password=polman";
                     Connection con = DriverManager.getConnection(url);
                     String sql = "Select * from pegawai where pg_username = ? and pg_password = ?";
                     PreparedStatement pst = con.prepareStatement(sql);
@@ -31,7 +31,7 @@ public class Login {
                     pst.setString(2, txtPassword.getText());
                     ResultSet rs = pst.executeQuery();
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Username dan Password Cocok!");
+                        JOptionPane.showMessageDialog(null, "Selamat datang!");
                         Login.remove(panel1);
                         Login.remove(panel2);
                         PegawaiAntrian c = new PegawaiAntrian();
@@ -41,7 +41,7 @@ public class Login {
                         Login.validate();
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Username dan Password Salah!");
+                        JOptionPane.showMessageDialog(null, "Username atau Password Salah!");
                         txtUsername.setText("");
                         txtPassword.setText("");
                     }

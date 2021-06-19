@@ -7,10 +7,7 @@ import java.awt.event.ActionListener;
 
 public class InputKTP {
     private JPanel JPInputKTP;
-    private JPanel JPLeftMenu;
     private JPanel JPMiddleMenu;
-    private JButton berandaButton;
-    private JButton daftarAntrianButton;
     private JButton btnSimpan;
     private JTextField txtNIK;
     private JComboBox cmbJenisKelamin;
@@ -26,9 +23,9 @@ public class InputKTP {
     private JComboBox cmbKewarganegaraan;
     private JComboBox cmbGoldar;
     private JButton btnKembali;
-    private JPanel JPRightMenu;
     private JButton btnBatal;
     private JTable tblDataKTP;
+    private JPanel JPRightMenu;
 
     //membuat object dari class DBConnection
     DBConnection connection = new DBConnection();

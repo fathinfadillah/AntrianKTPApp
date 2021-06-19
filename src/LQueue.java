@@ -9,10 +9,6 @@ public class LQueue {
         size = 0;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
     public void enqueue (String newElement) {
         Node newNode = new Node(newElement);
         elements.addLast(newNode);

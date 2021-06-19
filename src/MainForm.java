@@ -1,10 +1,10 @@
 import DB.DBConnection;
-//import javafx.application.Application;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class MainForm {
     private JButton btnuser;
@@ -64,6 +64,9 @@ public class MainForm {
                     }
                     else
                     {
+                        String sql2 = "EXEC sp_deleteData";
+                        connection.pstat = connection.conn.prepareStatement(sql2);
+                        connection.pstat.executeUpdate();
                         System.exit(0);
                     }
                 }

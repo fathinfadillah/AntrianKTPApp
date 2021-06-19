@@ -68,10 +68,7 @@ public class SLinkedList {
 
     public void display() {
         Node pointer;
-
         pointer = head;
-
-        System.out.println("Size : " + this.size);
         while (pointer != null) {
             System.out.println(pointer.getData());
             pointer = pointer.getNextReference();
@@ -102,32 +99,6 @@ public class SLinkedList {
         pointer = null;
     }
 
-    public void deleteMiddle(int hitung) {
-        Node pointer;
 
-        pointer = head;
-        int i = 0;
-        while (i < hitung-1) {
-            pointer = pointer.getNextReference();
-            i++;
-        }
-        middle = pointer;
-        middle.setNextReference(pointer.getNextReference().getNextReference());
-        --this.size;
-    }
-
-    public void deleteTail() {
-        Node pointer;
-
-        pointer = head;
-        int i = 0;
-        while(i < size-2){
-            pointer = pointer.getNextReference();
-            i++;
-        }
-        tail = pointer;
-        tail.setNextReference(null);
-        --this.size;
-    }
 }
 
