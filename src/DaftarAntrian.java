@@ -7,7 +7,7 @@ public class DaftarAntrian {
     private JPanel formutama;
     private JPanel panel1;
     private JButton berandaButton;
-    private JTextArea textArea1;
+    private JTextArea daftarAntrian;
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Coba SD");
