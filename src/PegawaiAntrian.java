@@ -59,6 +59,8 @@ public class PegawaiAntrian {
                 formutama.validate();
             }
         });
+
+
         btnpgl1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
