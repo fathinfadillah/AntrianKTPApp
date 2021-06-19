@@ -10,10 +10,11 @@ public class SignUp {
     private JTextField txtRole;
     private JButton btnSignUp;
     private JTextField txtUsername;
-    private JTextField txtPassword;
     private JButton btnBack;
     private JPanel panel1;
     private JPanel panel3;
+    private JPasswordField txtpassword;
+    private JPasswordField txtpassword2;
 
     public SignUp() {
         btnBack.addActionListener(new ActionListener() {
@@ -27,6 +28,23 @@ public class SignUp {
                 SignUp.setLayout(new BorderLayout());
                 SignUp.add(c.Login);
                 SignUp.validate();
+            }
+        });
+        btnSignUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pegawai p = new Pegawai();
+                p.setNama(txtNama.getText());
+                p.setrole(txtRole.getText());
+                p.setUsername(txtUsername.getText());
+                if(String.valueOf(txtpassword.getPassword()).equals(String.valueOf(txtpassword2.getPassword())))
+                {
+                    p.setUsername(String.valueOf(txtpassword.getPassword()));
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Password anda belum sama!","Error",JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }
