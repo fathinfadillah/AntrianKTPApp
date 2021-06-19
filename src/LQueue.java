@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class LQueue {
     private SLinkedList elements;
     public int size;
@@ -19,7 +21,7 @@ public class LQueue {
 
     public String dequeue() {
         if (size == 0) {
-            System.out.println("Cannot Dequeue, Queue is Empty");
+            JOptionPane.showMessageDialog(null, "Antrian kosong! ","Informasi",JOptionPane.INFORMATION_MESSAGE);
             return null;
         }
 

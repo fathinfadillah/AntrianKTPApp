@@ -1,3 +1,6 @@
+import DB.DBConnection;
+import javafx.application.Application;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +13,8 @@ public class MainForm {
     private JPanel panel1;
     private JPanel panel2;
     private JButton btnaboutus;
+    private JButton btnkeluar;
+    DBConnection connection = new DBConnection();
 
     public MainForm() {
         btnuser.addActionListener(new ActionListener() {
@@ -46,6 +51,25 @@ public class MainForm {
                 formutama.setLayout(new BorderLayout());
                 formutama.add(c.AboutUs);
                 formutama.validate();
+            }
+        });
+        btnkeluar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
+                    connection.result = connection.stat.executeQuery(query);
+                    if (connection.result.next()) {
+                        JOptionPane.showMessageDialog(null, "Masih terdapat sisa antrian!","Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                    else
+                    {
+                        System.exit(0);
+                    }
+                }
+                catch (Exception e1) {
+                    System.out.println("Terjadi error pada saat keluar:" + e1);
+                }
             }
         });
     }

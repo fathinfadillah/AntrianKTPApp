@@ -137,7 +137,7 @@
               <borderPainted value="false"/>
               <font size="16" style="1"/>
               <foreground color="-16768928"/>
-              <text value="Log out"/>
+              <text value="Back"/>
             </properties>
           </component>
         </children>

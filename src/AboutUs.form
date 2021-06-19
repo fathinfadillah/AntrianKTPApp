@@ -47,7 +47,7 @@
             <properties>
               <font name="Segoe UI" size="28" style="1"/>
               <foreground color="-1"/>
-              <text value="Developed by Kelompok 5"/>
+              <text value="Developed by Kelompok 05"/>
             </properties>
           </component>
           <component id="d92f7" class="javax.swing.JLabel">
@@ -89,7 +89,7 @@
                 <properties>
                   <background color="-1"/>
                   <foreground color="-16768927"/>
-                  <text value="BACK"/>
+                  <text value="               BACK                 "/>
                 </properties>
               </component>
             </children>
