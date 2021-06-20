@@ -9,6 +9,8 @@ public class Pengantri {
     private String pekerjaan;
     private String kewarganegaraan;
     private String goldar;
+    private String kelurahan;
+    private String kecamatan;
 
     public Pengantri()
     {
@@ -22,10 +24,12 @@ public class Pengantri {
         pekerjaan = "";
         kewarganegaraan = "";
         goldar = "";
+        kelurahan = "";
+        kecamatan = "";
     }
     public Pengantri (String nik, String nama, String ttl, String jenis,
                       String alamat, String agama, String status, String pekerjaan,
-                      String kewarganegaraan, String goldar)
+                      String kewarganegaraan, String goldar, String kelurahan, String kecamatan)
     {
         this.nik = nik;
         this.nama = nama;
@@ -37,6 +41,8 @@ public class Pengantri {
         this.pekerjaan = pekerjaan;
         this.kewarganegaraan = kewarganegaraan;
         this.goldar = goldar;
+        this.kelurahan = kelurahan;
+        this.kecamatan = kecamatan;
     }
 
     public String getNik()
@@ -79,6 +85,8 @@ public class Pengantri {
     {
         return goldar;
     }
+    public String getKelurahan(){return kelurahan;}
+    public String getKecamatan(){return kecamatan;}
     public void setnik(String nik)
     {
         this.nik = nik;
@@ -119,5 +127,7 @@ public class Pengantri {
     {
         this.goldar = goldar;
     }
+    public void setKelurahan(String kelurahan) { this.kelurahan = kelurahan;}
+    public void setKecamatan(String kecamatan) {this.kecamatan = kecamatan;}
 }
 

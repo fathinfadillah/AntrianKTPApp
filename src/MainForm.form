@@ -65,7 +65,7 @@
               <borderPainted value="false"/>
               <font size="20" style="1"/>
               <foreground color="-16768928"/>
-              <text value="    USER    "/>
+              <text value="PENGANTRI"/>
             </properties>
           </component>
           <component id="9d1f1" class="javax.swing.JButton" binding="btnpegawai">
@@ -77,7 +77,7 @@
               <borderPainted value="false"/>
               <font size="20" style="1"/>
               <foreground color="-1"/>
-              <text value=" PEGAWAI "/>
+              <text value="  PEGAWAI  "/>
             </properties>
           </component>
           <component id="8398b" class="javax.swing.JLabel">
@@ -99,7 +99,7 @@
               <borderPainted value="false"/>
               <font size="20" style="1"/>
               <foreground color="-1"/>
-              <text value="ABOUT US"/>
+              <text value="  ABOUT US "/>
             </properties>
           </component>
           <component id="ead2c" class="javax.swing.JButton" binding="btnkeluar">
@@ -111,7 +111,7 @@
               <borderPainted value="false"/>
               <font size="20" style="1"/>
               <foreground color="-1"/>
-              <text value="  KELUAR  "/>
+              <text value="    KELUAR   "/>
             </properties>
           </component>
         </children>

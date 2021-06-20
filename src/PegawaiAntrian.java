@@ -48,7 +48,16 @@ public class PegawaiAntrian {
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                simpanantrian();
+                while (q.size != 0) {
+                    try {
+                        String query = "INSERT INTO antrian VALUES (?)";
+                        connection.pstat = connection.conn.prepareStatement(query);
+                        connection.pstat.setString(1, q.dequeue());
+                        connection.pstat.executeUpdate(); //inseert ke database
+                    } catch (Exception e1) {
+                        System.out.println("Terjadi error pada saat insert antrian:" + e1);
+                    }
+                }
                 formutama.remove(panel1);
                 formutama.remove(panel2);
                 MainForm c = new MainForm();
@@ -115,8 +124,20 @@ public class PegawaiAntrian {
         btnantrian.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                simpanantrian();
-                jp1.setVisible(false);
+                PegawaiAntrian p = new PegawaiAntrian();
+                while (q.size != 0) {
+                    try {
+                        String query = "INSERT INTO antrian VALUES (?)";
+                        connection.pstat = connection.conn.prepareStatement(query);
+                        connection.pstat.setString(1, q.dequeue());
+                        connection.pstat.executeUpdate(); //inseert ke database
+                    } catch (Exception e1) {
+                        System.out.println("Terjadi error pada saat insert antrian:" + e1);
+                    }
+                }
+                panel2.removeAll();
+                panel2.repaint();
+                panel2.revalidate();
                 c.formutama.setVisible(true);
                 panel2.setLayout(new BorderLayout());
                 panel2.add(c.formutama);
@@ -125,39 +146,36 @@ public class PegawaiAntrian {
         berandaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
-                    connection.result = connection.stat.executeQuery(query);
-                    while (connection.result.next()) {
-                        q.enqueue(connection.result.getString("no_antrian"));
-                    }
-                    String query2 = "DELETE FROM antrian;";
-                    connection.pstat = connection.conn.prepareStatement(query2);
-                    connection.pstat.executeUpdate(); //inseert ke database
-                }
-                catch (Exception e1) {
-                    System.out.println("Terjadi error pada saat insert antrian:" + e1);
-                }
+                PegawaiAntrian p = new PegawaiAntrian();
                 c.formutama.setVisible(false);
-                jp1.setVisible(true);
-                panel2.add(jp1);
+                p.jp1.setVisible(true);
+                panel2.setLayout(new BorderLayout());
+                panel2.add(p.jp1);
+            }
+        });
+        btnpros2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InputKTP a= new InputKTP();
+                a.menu();
+            }
+        });
+        btnpros.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InputKTP a= new InputKTP();
+                a.menu();
+            }
+        });
+        btnpros3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                InputKTP a= new InputKTP();
+                a.menu();
             }
         });
     }
 
-    public void simpanantrian()
-    {
-        while (q.size != 0) {
-            try {
-                String query = "INSERT INTO antrian VALUES (?)";
-                connection.pstat = connection.conn.prepareStatement(query);
-                connection.pstat.setString(1, q.dequeue());
-                connection.pstat.executeUpdate(); //inseert ke database
-            } catch (Exception e1) {
-                System.out.println("Terjadi error pada saat insert antrian:" + e1);
-            }
-        }
-    }
     public static void main(String[] args) {
         JFrame frame = new JFrame("Coba SD");
         frame.setContentPane(new PegawaiAntrian().formutama);

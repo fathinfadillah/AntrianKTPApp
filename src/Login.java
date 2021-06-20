@@ -9,13 +9,13 @@ import java.sql.ResultSet;
 
 public class Login {
     private JTextField txtUsername;
-    private JTextField txtPassword;
     private JButton btnLogin;
     private JButton btnSignUp;
     public JPanel Login;
     private JPanel panel1;
     private JPanel panel2;
     private JButton btnback;
+    private JPasswordField txtPassword;
 
     public Login() {
         btnLogin.addActionListener(new ActionListener() {
@@ -31,7 +31,8 @@ public class Login {
                     pst.setString(2, txtPassword.getText());
                     ResultSet rs = pst.executeQuery();
                     if (rs.next()) {
-                        JOptionPane.showMessageDialog(null, "Selamat datang!");
+                        JOptionPane.showMessageDialog(null, "Selamat datang Bapak/Ibu!", "Login Pegawai",
+                                JOptionPane.INFORMATION_MESSAGE);
                         Login.remove(panel1);
                         Login.remove(panel2);
                         PegawaiAntrian c = new PegawaiAntrian();
@@ -41,7 +42,8 @@ public class Login {
                         Login.validate();
                     }
                     else {
-                        JOptionPane.showMessageDialog(null, "Username atau Password Salah!");
+                        JOptionPane.showMessageDialog(null, "Username atau Password Salah!","Login Pegawai",
+                                JOptionPane.ERROR_MESSAGE);
                         txtUsername.setText("");
                         txtPassword.setText("");
                     }
