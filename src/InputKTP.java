@@ -4,6 +4,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class InputKTP {
     private JPanel JPInputKTP;
@@ -70,30 +72,37 @@ public class InputKTP {
                 data.setKewarganegaraan((String)cmbKewarganegaraan.getSelectedItem());
                 data.setgoldar((String)cmbGoldar.getSelectedItem());
 
-                //statement untuk proses input ke database
-                try{
-                    String query = "INSERT INTO data_ktp VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-                    connection.pstat = connection.conn.prepareStatement(query);
-                    connection.pstat.setString(1, data.getNik());
-                    connection.pstat.setString(2, data.getNama());
-                    connection.pstat.setString(3, data.getTtl());
-                    connection.pstat.setString(4, data.getJenis());
-                    connection.pstat.setString(5, data.getAlamat());
-                    connection.pstat.setString(6, txtKelurahan.getText());
-                    connection.pstat.setString(7, txtKecamatan.getText());
-                    connection.pstat.setString(8, data.getAgama());
-                    connection.pstat.setString(9, data.getStatus());
-                    connection.pstat.setString(10, data.getPekerjaan());
-                    connection.pstat.setString(11, data.getKewarganegaraan());
-                    connection.pstat.setString(12, data.getGoldar());
+                if (txtNIK.getText().equals("") || txtNama.getText().equals("") || txtTTL.getText().equals("")
+                    || txtAlamat.getText().equals("") ||  txtKelurahan.getText().equals("")
+                    || txtKecamatan.getText().equals("") || txtPekerjaan.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Data tidak boleh ada yang kosong!");
+                } else if (txtNIK.getText().length() < 15 || txtNIK.getText().length() > 16) {
+                    JOptionPane.showMessageDialog(null, "NIK harus 16 digit!");
+                } else {
+                    //statement untuk proses input ke database
+                    try {
+                        String query = "INSERT INTO data_ktp VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                        connection.pstat = connection.conn.prepareStatement(query);
+                        connection.pstat.setString(1, data.getNik());
+                        connection.pstat.setString(2, data.getNama());
+                        connection.pstat.setString(3, data.getTtl());
+                        connection.pstat.setString(4, data.getJenis());
+                        connection.pstat.setString(5, data.getAlamat());
+                        connection.pstat.setString(6, txtKelurahan.getText());
+                        connection.pstat.setString(7, txtKecamatan.getText());
+                        connection.pstat.setString(8, data.getAgama());
+                        connection.pstat.setString(9, data.getStatus());
+                        connection.pstat.setString(10, data.getPekerjaan());
+                        connection.pstat.setString(11, data.getKewarganegaraan());
+                        connection.pstat.setString(12, data.getGoldar());
 
-                    connection.pstat.executeUpdate();   //insert ke database
-                    connection.pstat.close();           //menutup koneksi db
+                        connection.pstat.executeUpdate();   //insert ke database
+                        connection.pstat.close();           //menutup koneksi db
+                    } catch (Exception e1) {
+                        System.out.println("Terjadi error pada saat insert data : " + e1);
+                    }
+                    JOptionPane.showMessageDialog(null, "Insert data berhasil");
                 }
-                catch (Exception e1){
-                    System.out.println("Terjadi error pada saat insert data : "+e1);
-                }
-                JOptionPane.showMessageDialog(null, "Insert data berhasil");
             }
         });
 
@@ -101,6 +110,76 @@ public class InputKTP {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+
+        txtNIK.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                char c = e.getKeyChar();
+                if(Character.isDigit(c) || Character.isISOControl(c)) {
+                    txtNIK.setEditable(true);
+                } else {
+                    txtNIK.setEditable(false);
+                }
+            }
+        });
+
+        txtNama.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                char c = e.getKeyChar();
+                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+                    txtNama.setEditable(true);
+                } else {
+                    txtNama.setEditable(false);
+                }
+            }
+        });
+
+        txtKelurahan.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                char c = e.getKeyChar();
+                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+                    txtKelurahan.setEditable(true);
+                } else {
+                    txtKelurahan.setEditable(false);
+                }
+            }
+        });
+
+        txtKecamatan.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                char c = e.getKeyChar();
+                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+                    txtKecamatan.setEditable(true);
+                } else {
+                    txtKecamatan.setEditable(false);
+                }
+            }
+        });
+
+        txtPekerjaan.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+
+                char c = e.getKeyChar();
+                if(Character.isLetter(c) || Character.isWhitespace(c) || Character.isISOControl(c)) {
+                    txtPekerjaan.setEditable(true);
+                } else {
+                    txtPekerjaan.setEditable(false);
+                }
             }
         });
 
@@ -130,21 +209,21 @@ public class InputKTP {
         model.addColumn("Golongan Darah");
     }
 
-    public void loadData(){
+    public void loadData() {
         //menghapus seluruh data ditampilkan(jika ada) untuk tampilan pertama
         model.getDataVector().removeAllElements();
 
         //memberi tahu data telah kosong
         model.fireTableDataChanged();
 
-        try{
+        try {
             DBConnection connection = new DBConnection();
             connection.stat = connection.conn.createStatement();
             String query = "SELECT * FROM data_ktp";
             connection.result = connection.stat.executeQuery(query);
 
             //lakukan perbaris data
-            while(connection.result.next()){
+            while (connection.result.next()) {
                 Object[] obj = new Object[12];
                 obj[0] = connection.result.getString("ktp_nik");
                 obj[1] = connection.result.getString("ktp_nama");
@@ -162,9 +241,8 @@ public class InputKTP {
             }
             connection.stat.close();
             connection.result.close();
-        }
-        catch (Exception e){
-            System.out.println("Terjadi error saat load data : " +e);
+        } catch (Exception e) {
+            System.out.println("Terjadi error saat load data : " + e);
         }
     }
 
