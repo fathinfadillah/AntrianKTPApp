@@ -15,6 +15,11 @@ public class LQueue {
         ++size;
     }
 
+    public void  show()
+    {
+        elements.display();
+    }
+
     public String dequeue() {
         if (size == 0) {
             JOptionPane.showMessageDialog(null, "Antrian kosong! ","Informasi",JOptionPane.INFORMATION_MESSAGE);

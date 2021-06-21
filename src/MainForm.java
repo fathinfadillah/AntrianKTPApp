@@ -56,28 +56,29 @@ public class MainForm {
         btnkeluar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
-                    connection.result = connection.stat.executeQuery(query);
-                    if (connection.result.next()) {
-                        JOptionPane.showMessageDialog(null, "Masih terdapat sisa antrian!","Error",JOptionPane.ERROR_MESSAGE);
+                int reply = JOptionPane.showConfirmDialog(null, "Apakah anda yakin akan keluar dari aplikasi ini?", "Log Out Validation", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
+                    try {
+                        String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
+                        connection.result = connection.stat.executeQuery(query);
+                        if (connection.result.next()) {
+                            JOptionPane.showMessageDialog(null, "Masih terdapat sisa antrian!", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            String sql2 = "EXEC sp_deleteData";
+                            connection.pstat = connection.conn.prepareStatement(sql2);
+                            connection.pstat.executeUpdate();
+                            JOptionPane.showMessageDialog(null, "Terima kasih telah menggunakan aplikasi ini, sampai jumpa kembali!", "Thanks Message", JOptionPane.INFORMATION_MESSAGE);
+                            System.exit(0);
+                        }
+                    } catch (Exception e1) {
+                        System.out.println("Terjadi error pada saat keluar:" + e1);
                     }
-                    else
-                    {
-                        String sql2 = "EXEC sp_deleteData";
-                        connection.pstat = connection.conn.prepareStatement(sql2);
-                        connection.pstat.executeUpdate();
-                        System.exit(0);
-                    }
-                }
-                catch (Exception e1) {
-                    System.out.println("Terjadi error pada saat keluar:" + e1);
                 }
             }
         });
     }
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Coba SD");
+        JFrame frame = new JFrame("Aplikasi Antrian KTP");
         frame.setContentPane(new MainForm().formutama);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

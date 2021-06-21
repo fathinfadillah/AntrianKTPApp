@@ -68,7 +68,10 @@ public class SLinkedList {
 
     public void display() {
         Node pointer;
+
         pointer = head;
+
+        System.out.println("Size : " + this.size);
         while (pointer != null) {
             System.out.println(pointer.getData());
             pointer = pointer.getNextReference();

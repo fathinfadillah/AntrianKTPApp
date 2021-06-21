@@ -12,6 +12,31 @@ public class DaftarAntrian {
     public LQueue q = new LQueue();
     DBConnection connection = new DBConnection();
     public DaftarAntrian(){
+        try {
+            String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
+            connection.result = connection.stat.executeQuery(query);
+            while (connection.result.next()) {
+                q.enqueue(connection.result.getString("no_antrian"));
+            }
+        }
+        catch (Exception e1) {
+            System.out.println("Terjadi error pada saat insert antrian:" + e1);
+        }
+        txtsisa.setText((Integer.toString(q.size)));
+        while (q.size!=0)
+        {
+            daftarAntrian.append("- Antrian nomor "+q.dequeue()+"\n");
+        }
+        try {
+            String query4 = "SELECT COUNT(total) AS total FROM total";
+            connection.result = connection.stat.executeQuery(query4);
+            while (connection.result.next()) {
+                txttotal.setText(connection.result.getString("total"));
+            }
+        }
+        catch (Exception e1) {
+            System.out.println("Terjadi error pada saat insert antrian:" + e1);
+        }
     }
 
     public static void main(String[] args) {

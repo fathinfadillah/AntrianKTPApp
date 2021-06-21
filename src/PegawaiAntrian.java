@@ -8,11 +8,8 @@ import java.util.Date;
 
 public class PegawaiAntrian {
     public JPanel formutama;
-    private JPanel panel1;
     private JPanel panel2;
-    private JButton berandaButton;
     private JButton btnpros;
-    private JButton logOutButton;
     private JButton btnpros3;
     private JButton btnpgl1;
     private JButton btnpgl2;
@@ -21,15 +18,11 @@ public class PegawaiAntrian {
     public JLabel lbl1;
     public JLabel lbl2;
     public JLabel lbl3;
-    private JTextArea textArea1;
-    private JButton btnantrian;
-    private JPanel jp1;
-    private JPanel jpp;
+    public JPanel jp1;
     private JPanel jppp;
+    private JPanel jpp;
     private JPanel jpppp;
-    public SLinkedList s = new SLinkedList();
     public LQueue q = new LQueue();
-    DaftarAntrian c = new DaftarAntrian();
     DBConnection connection = new DBConnection();
     public PegawaiAntrian() {
         try {
@@ -38,40 +31,35 @@ public class PegawaiAntrian {
             while (connection.result.next()) {
                 q.enqueue(connection.result.getString("no_antrian"));
             }
-            String query2 = "DELETE FROM antrian;";
-            connection.pstat = connection.conn.prepareStatement(query2);
-            connection.pstat.executeUpdate(); //inseert ke database
+
+            String query0 = "SELECT * FROM loket3";
+            connection.result = connection.stat.executeQuery(query0);
+            while (connection.result.next()) {
+                lbl3.setText(connection.result.getString("no_antrian"));
+            }
+            String query01 = "SELECT * FROM loket2";
+            connection.result = connection.stat.executeQuery(query01);
+            while (connection.result.next()) {
+                lbl2.setText(connection.result.getString("no_antrian"));
+            }
+
+            String query02 = "SELECT * FROM loket1";
+            connection.result = connection.stat.executeQuery(query02);
+            while (connection.result.next()) {
+                lbl1.setText(connection.result.getString("no_antrian"));
+            }
         }
         catch (Exception e1) {
             System.out.println("Terjadi error pada saat insert antrian:" + e1);
         }
-        logOutButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                while (q.size != 0) {
-                    try {
-                        String query = "INSERT INTO antrian VALUES (?)";
-                        connection.pstat = connection.conn.prepareStatement(query);
-                        connection.pstat.setString(1, q.dequeue());
-                        connection.pstat.executeUpdate(); //inseert ke database
-                    } catch (Exception e1) {
-                        System.out.println("Terjadi error pada saat insert antrian:" + e1);
-                    }
-                }
-                formutama.remove(panel1);
-                formutama.remove(panel2);
-                MainForm c = new MainForm();
-                c.formutama.setVisible(true);
-                formutama.setLayout(new java.awt.BorderLayout());
-                formutama.add(c.formutama);
-                formutama.validate();
-            }
-        });
         btnpgl1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 lbl1.setText(q.dequeue());
                 try{
+                    String query3 = "DELETE FROM antrian WHERE no_antrian = "+lbl1.getText();
+                    connection.pstat = connection.conn.prepareStatement(query3);
+                    connection.pstat.executeUpdate(); //inseert ke database
                     String query2 = "DELETE FROM loket1;";
                     connection.pstat = connection.conn.prepareStatement(query2);
                     connection.pstat.executeUpdate(); //inseert ke database
@@ -90,6 +78,9 @@ public class PegawaiAntrian {
             public void actionPerformed(ActionEvent e) {
                 lbl2.setText(q.dequeue());
                 try{
+                    String query3 = "DELETE FROM antrian WHERE no_antrian = "+lbl2.getText();
+                    connection.pstat = connection.conn.prepareStatement(query3);
+                    connection.pstat.executeUpdate(); //inseert ke database
                     String query2 = "DELETE FROM loket2;";
                     connection.pstat = connection.conn.prepareStatement(query2);
                     connection.pstat.executeUpdate(); //inseert ke database
@@ -108,6 +99,9 @@ public class PegawaiAntrian {
             public void actionPerformed(ActionEvent e) {
                 lbl3.setText(q.dequeue());
                 try{
+                    String query3 = "DELETE FROM antrian WHERE no_antrian = "+lbl3.getText();
+                    connection.pstat = connection.conn.prepareStatement(query3);
+                    connection.pstat.executeUpdate(); //inseert ke database
                     String query2 = "DELETE FROM loket3;";
                     connection.pstat = connection.conn.prepareStatement(query2);
                     connection.pstat.executeUpdate(); //inseert ke database
@@ -119,38 +113,6 @@ public class PegawaiAntrian {
                 catch (Exception e1){
                     System.out.println("Terjadi error pada saat insert antrian:"+e1);
                 }
-            }
-        });
-        btnantrian.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PegawaiAntrian p = new PegawaiAntrian();
-                while (q.size != 0) {
-                    try {
-                        String query = "INSERT INTO antrian VALUES (?)";
-                        connection.pstat = connection.conn.prepareStatement(query);
-                        connection.pstat.setString(1, q.dequeue());
-                        connection.pstat.executeUpdate(); //inseert ke database
-                    } catch (Exception e1) {
-                        System.out.println("Terjadi error pada saat insert antrian:" + e1);
-                    }
-                }
-                panel2.removeAll();
-                panel2.repaint();
-                panel2.revalidate();
-                c.formutama.setVisible(true);
-                panel2.setLayout(new BorderLayout());
-                panel2.add(c.formutama);
-            }
-        });
-        berandaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PegawaiAntrian p = new PegawaiAntrian();
-                c.formutama.setVisible(false);
-                p.jp1.setVisible(true);
-                panel2.setLayout(new BorderLayout());
-                panel2.add(p.jp1);
             }
         });
         btnpros2.addActionListener(new ActionListener() {

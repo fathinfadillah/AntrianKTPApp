@@ -35,10 +35,10 @@ public class Login {
                                 JOptionPane.INFORMATION_MESSAGE);
                         Login.remove(panel1);
                         Login.remove(panel2);
-                        PegawaiAntrian c = new PegawaiAntrian();
-                        c.formutama.setVisible(true);
+                        MenuPegawai c = new MenuPegawai();
+                        c.jpMenuPegawai.setVisible(true);
                         Login.setLayout(new BorderLayout());
-                        Login.add(c.formutama);
+                        Login.add(c.jpMenuPegawai);
                         Login.validate();
                     }
                     else {
