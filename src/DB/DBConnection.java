@@ -11,6 +11,7 @@ public class DBConnection {
     public DBConnection(){
         try{
             String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;user=sa;password=polman";
+            //String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;integratedSecurity=true";
             conn = DriverManager.getConnection(url);
             stat = conn.createStatement();
         }

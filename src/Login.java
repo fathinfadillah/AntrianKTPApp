@@ -24,6 +24,7 @@ public class Login {
                 try {
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                     String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;user=sa;password=polman";
+                    //String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;integratedSecurity=true";
                     Connection con = DriverManager.getConnection(url);
                     String sql = "Select * from pegawai where pg_username = ? and pg_password = ?";
                     PreparedStatement pst = con.prepareStatement(sql);
