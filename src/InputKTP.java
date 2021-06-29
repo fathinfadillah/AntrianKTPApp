@@ -31,6 +31,8 @@ public class InputKTP {
 
     //membuat object dari class DBConnection
     DBConnection connection = new DBConnection();
+
+    //table
     private DefaultTableModel model;
 
     public InputKTP() {
@@ -46,6 +48,7 @@ public class InputKTP {
             public void actionPerformed(ActionEvent e) {
                 //object dari ADT Pengantri
                 Pengantri data = new Pengantri();
+
                 if (txtNIK.getText().equals("") || txtNama.getText().equals("") || txtTTL.getText().equals("")
                     || txtAlamat.getText().equals("") ||  txtKelurahan.getText().equals("")
                     || txtKecamatan.getText().equals("") || txtPekerjaan.getText().equals("")) {
@@ -62,14 +65,11 @@ public class InputKTP {
                             JOptionPane.showMessageDialog(null, "NIK sudah terdaftar!", "Input Data",
                                     JOptionPane.ERROR_MESSAGE);
                         }
-                        else
-                        {
+                        else {
                             data.setnik(txtNIK.getText());
                             data.setnama(txtNama.getText());
                             data.setttl(txtTTL.getText());
                             data.setjenis((String)cmbJenisKelamin.getSelectedItem());
-                            //String alamat = txtAlamat.getText() + ", " + txtRTRW.getText() + ", " + txtKelurahan.getText() +
-                            //        ", " + txtKecamatan.getText();
                             data.setalamat(txtAlamat.getText());
                             data.setagama((String)cmbAgama.getSelectedItem());
                             data.setStatus((String)cmbStatus.getSelectedItem());
@@ -78,8 +78,10 @@ public class InputKTP {
                             data.setgoldar((String)cmbGoldar.getSelectedItem());
                             data.setKecamatan(txtKecamatan.getText());
                             data.setKelurahan(txtKelurahan.getText());
+
                             int reply = JOptionPane.showConfirmDialog(null, " Data yang telah diinput tidak dapat diedit." +
                                     "\n Pastikan seluruh data sudah benar. \n Yakin input data ini?", "Validasi", JOptionPane.YES_NO_OPTION);
+
                             if (reply == JOptionPane.YES_OPTION) {
                                 //statement untuk proses input ke database
                                 String query = "INSERT INTO data_ktp VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -121,6 +123,7 @@ public class InputKTP {
             }
         });
 
+        //Validasi
         txtNIK.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -202,8 +205,7 @@ public class InputKTP {
         loadData();
     }
 
-    public void clear()
-    {
+    public void clear() {
         txtNIK.setText("");
         txtNama.setText("");
         txtTTL.setText("");
@@ -218,6 +220,7 @@ public class InputKTP {
         cmbGoldar.setSelectedItem("");
     }
 
+    //Header table
     public void addColumn(){
         model.addColumn("NIK");
         model.addColumn("Nama");
@@ -263,8 +266,7 @@ public class InputKTP {
         frame.setVisible(true);
     }
 
-    public void menu()
-    {
+    public void menu() {
         frame.setContentPane(new InputKTP().JPInputKTP);
         frame.pack();
         frame.setVisible(true);

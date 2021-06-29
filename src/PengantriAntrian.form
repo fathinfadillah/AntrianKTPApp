@@ -11,7 +11,7 @@
     </properties>
     <border type="bevel-lowered"/>
     <children>
-      <grid id="c43e0" binding="panel1" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="c43e0" binding="panel1" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="20" left="20" bottom="20" right="20"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -38,7 +38,9 @@
             <children>
               <component id="2a172" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <background color="-16768928"/>
@@ -100,7 +102,9 @@
               </grid>
               <component id="3f09e" class="javax.swing.JLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="-1" height="40"/>
+                  </grid>
                 </constraints>
                 <properties>
                   <background color="-16768928"/>
@@ -125,7 +129,7 @@
               <font size="22" style="1"/>
               <foreground color="-16768928"/>
               <hideActionText value="false"/>
-              <text value="AMBIL NO ANTRIAN"/>
+              <text value="AMBIL NOMOR ANTRIAN"/>
             </properties>
           </component>
           <component id="4c539" class="javax.swing.JButton" binding="logOutButton" default-binding="true">
@@ -137,8 +141,18 @@
               <borderPainted value="false"/>
               <font size="16" style="1"/>
               <foreground color="-16768928"/>
-              <text value="Back"/>
+              <text value="Kembali"/>
             </properties>
+          </component>
+          <component id="cbf4c" class="javax.swing.JToolBar$Separator">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="50"/>
+                <preferred-size width="-1" height="50"/>
+                <maximum-size width="-1" height="50"/>
+              </grid>
+            </constraints>
+            <properties/>
           </component>
         </children>
       </grid>

@@ -114,7 +114,7 @@
           <borderPainted value="false"/>
           <font size="16" style="1"/>
           <foreground color="-1"/>
-          <text value="Log out"/>
+          <text value="Keluar"/>
         </properties>
       </component>
       <grid id="48a55" binding="jpmenu" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

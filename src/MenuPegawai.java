@@ -13,8 +13,7 @@ public class MenuPegawai {
     private JButton logOutButton;
     PegawaiAntrian p = new PegawaiAntrian();
 
-    public MenuPegawai()
-    {
+    public MenuPegawai() {
         btnantrian.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,6 +27,7 @@ public class MenuPegawai {
                 jpmenu.add(c.formutama);
             }
         });
+
         berandaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,6 +40,7 @@ public class MenuPegawai {
                 jpmenu.add(p.jp1);
             }
         });
+
         logOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,6 +53,7 @@ public class MenuPegawai {
             }
         });
     }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Coba SD");
         frame.setContentPane(new MenuPegawai().jpMenuPegawai);

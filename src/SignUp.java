@@ -18,6 +18,7 @@ public class SignUp {
     private JPanel panel3;
     private JPasswordField txtpassword;
     private JPasswordField txtpassword2;
+    private JCheckBox lihatPasswordCheckBox;
 
     DBConnection connection = new DBConnection();
 
@@ -88,6 +89,19 @@ public class SignUp {
                 else {
                     JOptionPane.showMessageDialog(null, "Password anda belum sama!","Error",JOptionPane.ERROR_MESSAGE);
                     txtpassword2.setText("");
+                }
+            }
+        });
+
+        lihatPasswordCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (lihatPasswordCheckBox.isSelected()){
+                    txtpassword.setEchoChar((char) 0);
+                    txtpassword2.setEchoChar((char) 0);
+                }else{
+                    txtpassword.setEchoChar('•');
+                    txtpassword2.setEchoChar('•');
                 }
             }
         });

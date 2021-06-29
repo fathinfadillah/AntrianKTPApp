@@ -9,8 +9,10 @@ public class DaftarAntrian {
     private JLabel txttotal;
     public JPanel formutama;
     private JTextArea daftarAntrian;
+
     public LQueue q = new LQueue();
     DBConnection connection = new DBConnection();
+
     public DaftarAntrian(){
         try {
             String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";

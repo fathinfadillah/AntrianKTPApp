@@ -22,8 +22,10 @@ public class PegawaiAntrian {
     private JPanel jppp;
     private JPanel jpp;
     private JPanel jpppp;
+
     public LQueue q = new LQueue();
     DBConnection connection = new DBConnection();
+
     public PegawaiAntrian() {
         try {
             String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
@@ -37,6 +39,7 @@ public class PegawaiAntrian {
             while (connection.result.next()) {
                 lbl3.setText(connection.result.getString("no_antrian"));
             }
+
             String query01 = "SELECT * FROM loket2";
             connection.result = connection.stat.executeQuery(query01);
             while (connection.result.next()) {
@@ -52,6 +55,7 @@ public class PegawaiAntrian {
         catch (Exception e1) {
             System.out.println("Terjadi error pada saat insert antrian:" + e1);
         }
+
         btnpgl1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,6 +77,7 @@ public class PegawaiAntrian {
                 }
             }
         });
+
         btnpgl2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -94,6 +99,7 @@ public class PegawaiAntrian {
                 }
             }
         });
+
         btnpgl3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,6 +121,7 @@ public class PegawaiAntrian {
                 }
             }
         });
+
         btnpros2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -122,6 +129,7 @@ public class PegawaiAntrian {
                 a.menu();
             }
         });
+
         btnpros.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -129,6 +137,7 @@ public class PegawaiAntrian {
                 a.menu();
             }
         });
+        
         btnpros3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -16,6 +16,7 @@ public class Login {
     private JPanel panel2;
     private JButton btnback;
     private JPasswordField txtPassword;
+    private JCheckBox lihatPasswordCheckBox;
 
     public Login() {
         btnLogin.addActionListener(new ActionListener() {
@@ -23,14 +24,17 @@ public class Login {
             public void actionPerformed(ActionEvent e) {
                 try {
                     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
                     String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;user=sa;password=polman";
                     //String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;integratedSecurity=true";
+
                     Connection con = DriverManager.getConnection(url);
                     String sql = "Select * from pegawai where pg_username = ? and pg_password = ?";
                     PreparedStatement pst = con.prepareStatement(sql);
                     pst.setString(1, txtUsername.getText());
                     pst.setString(2, txtPassword.getText());
                     ResultSet rs = pst.executeQuery();
+
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Selamat datang Bapak/Ibu!", "Login Pegawai",
                                 JOptionPane.INFORMATION_MESSAGE);
@@ -56,6 +60,7 @@ public class Login {
 
             }
         });
+
         btnSignUp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,6 +73,7 @@ public class Login {
                 Login.validate();
             }
         });
+
         btnback.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,7 +86,19 @@ public class Login {
                 Login.validate();
             }
         });
+
+        lihatPasswordCheckBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (lihatPasswordCheckBox.isSelected()){
+                    txtPassword.setEchoChar((char) 0);
+                }else{
+                    txtPassword.setEchoChar('•');
+                }
+            }
+        });
     }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Login");
         frame.setContentPane(new Login().Login);

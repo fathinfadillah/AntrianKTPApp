@@ -29,6 +29,7 @@ public class MainForm {
                 formutama.validate();
             }
         });
+
         btnpegawai.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,6 +42,7 @@ public class MainForm {
                 formutama.validate();
             }
         });
+
         btnaboutus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -53,6 +55,7 @@ public class MainForm {
                 formutama.validate();
             }
         });
+
         btnkeluar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,6 +80,7 @@ public class MainForm {
             }
         });
     }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Aplikasi Antrian KTP");
         frame.setContentPane(new MainForm().formutama);
