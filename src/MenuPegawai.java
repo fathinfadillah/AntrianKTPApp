@@ -53,13 +53,4 @@ public class MenuPegawai {
             }
         });
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Coba SD");
-        frame.setContentPane(new MenuPegawai().jpMenuPegawai);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(800,400);
-    }
 }

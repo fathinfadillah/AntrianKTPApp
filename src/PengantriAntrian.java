@@ -33,14 +33,15 @@ public class PengantriAntrian {
                 antrian();
                 String total="";
                 try{
+                    //insert ke table terlebih dahulu
                     String query = "INSERT INTO antrian VALUES (?)";
                     connection.pstat = connection.conn.prepareStatement(query);
                     connection.pstat.setInt(1, nomor);
-                    connection.pstat.executeUpdate(); //inseert ke database
+                    connection.pstat.executeUpdate(); //untuk total antrian
                     String query2 = "INSERT INTO total VALUES (?)";
                     connection.pstat = connection.conn.prepareStatement(query2);
                     connection.pstat.setInt(1, nomor);
-                    connection.pstat.executeUpdate(); //inseert ke database
+                    connection.pstat.executeUpdate(); //hitung total antrian
                     String query3 = "SELECT COUNT(no_antrian) AS sisa FROM antrian";
                     connection.result = connection.stat.executeQuery(query3);
 
@@ -108,6 +109,7 @@ public class PengantriAntrian {
 
     public void antrian(){
         try{
+            //mengambil antrian terakhir untuk menetapkan antrian selanjutnya pada tabel
             String sql = "SELECT * FROM total ORDER BY total DESC";
             connection.stat = connection.conn.createStatement();
             connection.result = connection.stat.executeQuery(sql);
@@ -120,14 +122,5 @@ public class PengantriAntrian {
         }catch (Exception e1){
             System.out.println("Terjadi error pada no antrian : " + e1);
         }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Coba SD");
-        frame.setContentPane(new PengantriAntrian().formutama);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(800,400);
     }
 }

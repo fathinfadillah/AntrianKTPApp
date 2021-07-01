@@ -15,9 +15,11 @@ public class DaftarAntrian {
 
     public DaftarAntrian(){
         try {
+            //melihat data antrian pada tabel
             String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
             connection.result = connection.stat.executeQuery(query);
             while (connection.result.next()) {
+                //enqueue data di tabel ke dalam queue
                 q.enqueue(connection.result.getString("no_antrian"));
             }
         }
@@ -27,9 +29,11 @@ public class DaftarAntrian {
         txtsisa.setText((Integer.toString(q.size)));
         while (q.size!=0)
         {
+            //menampilkan data ke textarea lewat manipulasi dequeue (tidak benar2 dequeue pada antrian sebenarnya)
             daftarAntrian.append("- Antrian nomor "+q.dequeue()+"\n");
         }
         try {
+            //menghitung total antrian
             String query4 = "SELECT COUNT(total) AS total FROM total";
             connection.result = connection.stat.executeQuery(query4);
             while (connection.result.next()) {
@@ -39,14 +43,5 @@ public class DaftarAntrian {
         catch (Exception e1) {
             System.out.println("Terjadi error pada saat insert antrian:" + e1);
         }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Coba SD");
-        frame.setContentPane(new DaftarAntrian().formutama);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(1000,570);
     }
 }

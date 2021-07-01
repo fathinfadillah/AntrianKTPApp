@@ -259,13 +259,6 @@ public class InputKTP {
         }
     }
 
-    public static void main(String[] args) {
-        frame.setContentPane(new InputKTP().JPInputKTP);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
     public void menu() {
         frame.setContentPane(new InputKTP().JPInputKTP);
         frame.pack();

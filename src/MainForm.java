@@ -62,11 +62,13 @@ public class MainForm {
                 int reply = JOptionPane.showConfirmDialog(null, "Apakah anda yakin akan keluar dari aplikasi ini?", "Log Out Validation", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     try {
+                        //untuk mengetahui apakah masih terdapat sisa antrian atau tidak
                         String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
                         connection.result = connection.stat.executeQuery(query);
                         if (connection.result.next()) {
                             JOptionPane.showMessageDialog(null, "Masih terdapat sisa antrian!", "Error", JOptionPane.ERROR_MESSAGE);
                         } else {
+                            //menghapus data pada loket1, loket2, loket3, serta mengubah total antrian menjadi 0
                             String sql2 = "EXEC sp_deleteData";
                             connection.pstat = connection.conn.prepareStatement(sql2);
                             connection.pstat.executeUpdate();
@@ -80,7 +82,6 @@ public class MainForm {
             }
         });
     }
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("Aplikasi Antrian KTP");
         frame.setContentPane(new MainForm().formutama);

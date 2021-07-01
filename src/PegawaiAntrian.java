@@ -28,24 +28,27 @@ public class PegawaiAntrian {
 
     public PegawaiAntrian() {
         try {
+            //ambil data pada tabel
             String query = "SELECT * FROM antrian ORDER BY no_antrian ASC";
             connection.result = connection.stat.executeQuery(query);
             while (connection.result.next()) {
+                //enqueue ke dalam queue
                 q.enqueue(connection.result.getString("no_antrian"));
             }
 
+            //set text pada label loket
             String query0 = "SELECT * FROM loket3";
             connection.result = connection.stat.executeQuery(query0);
             while (connection.result.next()) {
                 lbl3.setText(connection.result.getString("no_antrian"));
             }
-
+            //set text pada label loket
             String query01 = "SELECT * FROM loket2";
             connection.result = connection.stat.executeQuery(query01);
             while (connection.result.next()) {
                 lbl2.setText(connection.result.getString("no_antrian"));
             }
-
+            //set text pada label loket
             String query02 = "SELECT * FROM loket1";
             connection.result = connection.stat.executeQuery(query02);
             while (connection.result.next()) {
@@ -59,8 +62,10 @@ public class PegawaiAntrian {
         btnpgl1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //dequeue antrian
                 lbl1.setText(q.dequeue());
                 try{
+                    //hapus data pada tabel antrian, loket1, dan insert lagi pada loket 1
                     String query3 = "DELETE FROM antrian WHERE no_antrian = "+lbl1.getText();
                     connection.pstat = connection.conn.prepareStatement(query3);
                     connection.pstat.executeUpdate(); //inseert ke database
@@ -81,8 +86,10 @@ public class PegawaiAntrian {
         btnpgl2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //dequeue antrian
                 lbl2.setText(q.dequeue());
                 try{
+                    //hapus data pada tabel antrian, loket2, dan insert lagi pada loket 2
                     String query3 = "DELETE FROM antrian WHERE no_antrian = "+lbl2.getText();
                     connection.pstat = connection.conn.prepareStatement(query3);
                     connection.pstat.executeUpdate(); //inseert ke database
@@ -103,8 +110,10 @@ public class PegawaiAntrian {
         btnpgl3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //dequeue antrian
                 lbl3.setText(q.dequeue());
                 try{
+                    //hapus data pada tabel antrian, loket3, dan insert lagi pada loket 3
                     String query3 = "DELETE FROM antrian WHERE no_antrian = "+lbl3.getText();
                     connection.pstat = connection.conn.prepareStatement(query3);
                     connection.pstat.executeUpdate(); //inseert ke database
@@ -145,14 +154,5 @@ public class PegawaiAntrian {
                 a.menu();
             }
         });
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Coba SD");
-        frame.setContentPane(new PegawaiAntrian().formutama);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-        frame.setSize(800,400);
     }
 }
