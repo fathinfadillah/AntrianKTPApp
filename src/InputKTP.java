@@ -49,14 +49,18 @@ public class InputKTP {
                 //object dari ADT Pengantri
                 Pengantri data = new Pengantri();
 
+                //validasi jika masih ada data yang belum diisi
                 if (txtNIK.getText().equals("") || txtNama.getText().equals("") || txtTTL.getText().equals("")
                     || txtAlamat.getText().equals("") ||  txtKelurahan.getText().equals("")
                     || txtKecamatan.getText().equals("") || txtPekerjaan.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Data tidak boleh ada yang kosong!");
-                } else if (txtNIK.getText().length() < 16 || txtNIK.getText().length() > 16) {
+                }
+                else if (txtNIK.getText().length() < 16 || txtNIK.getText().length() > 16) {
                     JOptionPane.showMessageDialog(null, "NIK harus 16 digit!");
-                } else {
+                }
+                else {
                     try {
+                        //select NIK dari database jika NIK sudah pernah terdaftar
                         connection.stat = connection.conn.createStatement();
                         String query2 = "SELECT * FROM data_ktp WHERE ktp_nik = '" + txtNIK.getText() + "'";
                         connection.result = connection.stat.executeQuery(query2);
@@ -66,6 +70,7 @@ public class InputKTP {
                                     JOptionPane.ERROR_MESSAGE);
                         }
                         else {
+                            //set data KTP dari input user ke ADT pengantri
                             data.setnik(txtNIK.getText());
                             data.setnama(txtNama.getText());
                             data.setttl(txtTTL.getText());
@@ -79,6 +84,7 @@ public class InputKTP {
                             data.setKecamatan(txtKecamatan.getText());
                             data.setKelurahan(txtKelurahan.getText());
 
+                            //konfirmasi untuk user apabila data yang sudah diinput ke database tidak bisa diubah
                             int reply = JOptionPane.showConfirmDialog(null, " Data yang telah diinput tidak dapat diedit." +
                                     "\n Pastikan seluruh data sudah benar. \n Yakin input data ini?", "Validasi", JOptionPane.YES_NO_OPTION);
 
@@ -206,6 +212,7 @@ public class InputKTP {
     }
 
     public void clear() {
+        //method clear untuk membuat data textbox/combobox menjadi kosong
         txtNIK.setText("");
         txtNama.setText("");
         txtTTL.setText("");
@@ -237,6 +244,7 @@ public class InputKTP {
         model.fireTableDataChanged();
 
         try {
+            //koneksi untuk mendapatkan data KTP dari database
             DBConnection connection = new DBConnection();
             connection.stat = connection.conn.createStatement();
             String query = "SELECT * FROM data_ktp";

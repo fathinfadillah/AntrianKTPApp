@@ -28,6 +28,7 @@ public class Login {
                     String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;user=sa;password=polman";
                     //String url = "jdbc:sqlserver://localhost;database=AntrianKTP_Kel05;integratedSecurity=true";
 
+                    //mendapatkan data username dan password yang sesuai dari databse untuk login
                     Connection con = DriverManager.getConnection(url);
                     String sql = "Select * from pegawai where pg_username = ? and pg_password = ?";
                     PreparedStatement pst = con.prepareStatement(sql);
@@ -35,6 +36,7 @@ public class Login {
                     pst.setString(2, txtPassword.getText());
                     ResultSet rs = pst.executeQuery();
 
+                    //jika username dan password sesuai
                     if (rs.next()) {
                         JOptionPane.showMessageDialog(null, "Selamat datang Bapak/Ibu!", "Login Pegawai",
                                 JOptionPane.INFORMATION_MESSAGE);
@@ -57,7 +59,6 @@ public class Login {
                 catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, ex);
                 }
-
             }
         });
 
@@ -90,6 +91,7 @@ public class Login {
         lihatPasswordCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //method untuk lihat password atas sembunyikan password
                 if (lihatPasswordCheckBox.isSelected()){
                     txtPassword.setEchoChar((char) 0);
                 }else{

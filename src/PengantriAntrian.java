@@ -84,18 +84,21 @@ public class PengantriAntrian {
 
     public void setlabeltext() {
         try{
+            //set label dengan nomer antrian dari table loket 1 di database
             String query = "SELECT * FROM loket1";
             connection.result = connection.stat.executeQuery(query);
             while (connection.result.next()) {
                 lbl1.setText(connection.result.getString("no_antrian"));
             }
 
+            //set label dengan nomer antrian dari table loket 2 di database
             String query2 = "SELECT * FROM loket2";
             connection.result = connection.stat.executeQuery(query2);
             while (connection.result.next()) {
                 lbl2.setText(connection.result.getString("no_antrian"));
             }
 
+            //set label dengan nomer antrian dari table loket 3 di database
             String query3 = "SELECT * FROM loket3";
             connection.result = connection.stat.executeQuery(query3);
             while (connection.result.next()) {
